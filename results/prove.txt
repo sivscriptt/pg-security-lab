@@ -1,0 +1,26 @@
+PASS  TCP without TLS is refused                         no encryption
+PASS  TLS with a verified certificate works              TLSv1.3
+PASS  A wrong password is refused                        password authentication failed
+PASS  teller_male sees only branch 1                     1|2000
+PASS  teller_addu sees only branch 3                     3|2000
+PASS  A teller can't read the encrypted ID column        permission denied
+PASS  A teller finds a customer by ID in their branch    5
+PASS  ...but not a customer of another branch            
+PASS  A teller can't decrypt an ID                       permission denied
+PASS  kyc1 can reveal an ID with the key and a reason    A100005
+PASS  ...and the look is logged in audit.pii_access      kyc1|5|account opening check
+PASS  kyc1 can't reveal without a reason                 a reason is required
+PASS  The wrong key gives an error, not data             Wrong key or corrupt data
+PASS  app moves money through core.transfer              ok
+PASS  app can't UPDATE balances directly                 permission denied
+PASS  The transfer left two rows in the change log       2|app
+PASS  app can't touch the change log                     permission denied
+PASS  Even audit can't edit the change log               permission denied
+PASS  app can't create objects in core                   permission denied
+PASS  app is not a superuser                             f
+PASS  DDL by postgres is in the audit log                AUDIT: SESSION,1,1,DDL,CREATE TABLE
+PASS  Role changes are in the audit log                  AUDIT: SESSION,3,1,ROLE,CREATE ROLE
+PASS  A teller reading customers is in the audit log     teller_male@bank LOG:  AUDIT: OBJECT,1,1,READ,SELECT,TABLE,core.custom
+PASS  The password in CREATE ROLE is redacted            password <REDACTED>
+PASS  ...and the secret appears nowhere in the log       
+25 passed, 0 failed

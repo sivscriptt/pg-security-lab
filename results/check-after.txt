@@ -1,0 +1,17 @@
+C01  PASS  TLS is on                                            ssl = on
+C02  PASS  TLS 1.2 or newer only                                ssl_min_protocol_version = TLSv1.2
+C03  PASS  New passwords are hashed with SCRAM                  password_encryption = scram-sha-256
+C04  PASS  No login role has an MD5 password                    none
+C05  PASS  Every login role has a password                      all set
+C06  PASS  No trust lines in pg_hba.conf                        none
+C07  PASS  TCP logins must use TLS                              hostssl only
+C08  PASS  Only postgres is a superuser                         postgres only
+C09  PASS  PUBLIC cannot create objects in core                 revoked
+C10  PASS  PUBLIC has no rights on core tables                  none
+C11  PASS  Row level security forced on customers and accounts  accounts on, customers on
+C12  PASS  National ID is not stored in plain text              encrypted with pgcrypto
+C13  PASS  SECURITY DEFINER functions pin search_path           all pinned
+C14  PASS  pgaudit loaded, logging DDL and role changes         pgaudit.log = ddl, role
+C15  PASS  Connections and disconnections are logged            log_connections = on, log_disconnections = on
+C16  PASS  Change log exists and is append only                 only superusers can change it
+16 passed, 0 failed

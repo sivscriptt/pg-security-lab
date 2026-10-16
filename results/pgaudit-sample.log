@@ -1,0 +1,6 @@
+2026-10-16 13:35:18.888 +05 [41618] teller_male@bank LOG:  AUDIT: OBJECT,1,1,READ,SELECT,TABLE,core.customers,"select string_agg(distinct branch_id::text, ',') || '|' || count(*) from core.customers",<not logged>
+2026-10-16 13:35:18.978 +05 [41630] teller_addu@bank LOG:  AUDIT: OBJECT,1,1,READ,SELECT,TABLE,core.customers,"select string_agg(distinct branch_id::text, ',') || '|' || count(*) from core.customers",<not logged>
+2026-10-16 13:35:20.224 +05 [41834] postgres@bank LOG:  AUDIT: SESSION,1,1,DDL,CREATE TABLE,TABLE,core.tmp_audit_demo,create table core.tmp_audit_demo (x int),<not logged>
+2026-10-16 13:35:20.225 +05 [41834] postgres@bank LOG:  AUDIT: SESSION,2,1,DDL,DROP TABLE,TABLE,core.tmp_audit_demo,drop table core.tmp_audit_demo,<not logged>
+2026-10-16 13:35:20.242 +05 [41834] postgres@bank LOG:  AUDIT: SESSION,3,1,ROLE,CREATE ROLE,,,create role tmp_pw_demo login password <REDACTED>,<not logged>
+2026-10-16 13:35:20.243 +05 [41834] postgres@bank LOG:  AUDIT: SESSION,4,1,ROLE,DROP ROLE,,,drop role tmp_pw_demo,<not logged>

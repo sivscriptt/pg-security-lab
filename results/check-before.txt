@@ -1,0 +1,17 @@
+C01  FAIL  TLS is on                                            ssl = off
+C02  FAIL  TLS 1.2 or newer only                                ssl_min_protocol_version = TLSv1.2
+C03  FAIL  New passwords are hashed with SCRAM                  password_encryption = md5
+C04  FAIL  No login role has an MD5 password                    md5: app, teller1
+C05  FAIL  Every login role has a password                      no password: postgres
+C06  FAIL  No trust lines in pg_hba.conf                        trust on lines 117, 119, 121, 124, 125, 126, 127
+C07  FAIL  TCP logins must use TLS                              plain host lines 119, 121, 125, 126, 127
+C08  FAIL  Only postgres is a superuser                         also superuser: app
+C09  FAIL  PUBLIC cannot create objects in core                 PUBLIC has CREATE
+C10  FAIL  PUBLIC has no rights on core tables                  4 tables readable by PUBLIC
+C11  FAIL  Row level security forced on customers and accounts  accounts off, customers off
+C12  FAIL  National ID is not stored in plain text              core.customers.national_id is text
+C13  FAIL  SECURITY DEFINER functions pin search_path           unpinned: core.customer_count(integer)
+C14  FAIL  pgaudit loaded, logging DDL and role changes         pgaudit.log = not loaded
+C15  FAIL  Connections and disconnections are logged            log_connections = off, log_disconnections = off
+C16  FAIL  Change log exists and is append only                 no change log table
+0 passed, 16 failed
